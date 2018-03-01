@@ -59,27 +59,23 @@
             <table>
                 <tr>
                     <th>Image</th>
-
                     <th>Item Type:</th>
-
                     <th>Item Name</th>
                     <th>Item Status</th>
                     <th>Item Services</th>
-
+                    <th>Item Owner</th>
                 </tr>
 
-                <tr th:each="item : ${itemlist}">
+                <tr th:each="item : ${itemslist}">
                     <td><img th:src="${item.image}" style="height: 200px"></td>
                     <td th:text="${item.itemType}"></td>
                     <td th:text="${item.itemName}"></td>
                     <td th:text="${item.itemStatus}"></td>
-                    <!--<td>-->
-          <!--<span th:each="user:${item.user}">-->
-            <!--<p th:text="${user.firstName}"></p>-->
-          <!--</span>-->
-                    <!--</td>-->
-                    <!--<td th:text="${item.itemName}"></td>-->
-
+                    <td>
+          <span th:each="user:${item.user}">
+            <p th:text="${user.firstName}"></p>
+          </span>
+                    </td>
                     <td>
                         <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/update/{id}(id=${item.id})}" target="_self">
                             Change Item Within Directory

@@ -7,6 +7,7 @@ import me.travisgray.Repositories.UserRepository;
 import me.travisgray.Service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +42,8 @@ public class HomeController {
 
     @RequestMapping("/login")
     public String login(){
+
+
 
         return "login";
     }
@@ -95,14 +98,14 @@ public class HomeController {
         item.addUser(user);
         userRepository.save(user);
         itemRepository.save(item);
-        model.addAttribute("itemlist",itemRepository.findAll());
+        model.addAttribute("itemslist",itemRepository.findAll());
         return "itemlist";
     }
 
 
     @GetMapping("/list")
     public String listitems(Model model){
-        model.addAttribute("itemlist",itemRepository.findAll());
+        model.addAttribute("itemslist",itemRepository.findAll());
         return "itemlist";
     }
 
@@ -162,6 +165,18 @@ public class HomeController {
         return "redirect:/list";
     }
 
+    @PostMapping("/lostitmes")
+    public String lostitemslist(@ModelAttribute("items") Item item,Model model){
+
+        if(item.getItemStatus().equalsIgnoreCase("Lost")){
+            model.addAttribute("itemslist",userRepository.findAll());
+
+        }
+
+        return "redirect:/list";
+
+
+    }
 
 //    @GetMapping("/addtopledge")
 //    public String additemtopledgelist(HttpServletRequest request, Model model, Authentication auth){

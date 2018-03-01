@@ -65,6 +65,7 @@
                     <th>Item Name</th>
                     <th>Item Status</th>
                     <th>Item Services</th>
+                    <th>Item Owner</th>
 
                 </tr>
 
@@ -73,12 +74,12 @@
                     <td th:text="${item.itemType}"></td>
                     <td th:text="${item.itemName}"></td>
                     <td th:text="${item.itemStatus}"></td>
-                    <!--<td>-->
-                    <!--<span th:each="user:${item.user}">-->
-                    <!--<p th:text="${user.firstName}"></p>-->
-                    <!--</span>-->
-                    <!--</td>-->
-                    <!--<td th:text="${item.itemName}"></td>-->
+                    <td>
+                    <span th:each="user:${item.user}">
+                    <p th:text="${user.firstName}"></p>
+                    </span>
+                    </td>
+                    <td th:text="${item.itemName}"></td>
                 </tr>
             </table>
         </div>
