@@ -19,7 +19,7 @@ public class Item {
 
     private String itemName;
 
-    private String servingSize;
+    private String itemStatus;
 
     private String itemType;
 
@@ -31,17 +31,25 @@ public class Item {
         this.user = new HashSet<User>();
     }
 
-    public Item(String image, String itemName, String servingSize, String itemType) {
+    public Item(String image, String itemName, String itemType,String itemStatus) {
         this.image = image;
         this.itemName = itemName;
-        this.servingSize = servingSize;
         this.itemType = itemType;
+        this.itemStatus = itemStatus;
     }
+
 
     public void addUser(User u){
         this.user.add(u);
     }
 
+    public String getItemStatus() {
+        return itemStatus;
+    }
+
+    public void setItemStatus(String itemStatus) {
+        this.itemStatus = itemStatus;
+    }
 
     public Set<User> getUser() {
         return user;
@@ -73,14 +81,6 @@ public class Item {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
-    }
-
-    public String getServingSize() {
-        return servingSize;
-    }
-
-    public void setServingSize(String servingSize) {
-        this.servingSize = servingSize;
     }
 
     public String getItemType() {

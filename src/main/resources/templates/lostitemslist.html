@@ -35,24 +35,24 @@
     </header>
 
     <!-- Menu -->
-        <nav id="menu">
-            <h2>Menu</h2>
-            <ul>
-                <li><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/login}">Login</a></li>
-                <li><a th:href="@{/register}">Register</a></li>
-                <li><a th:href="@{/additem}">Add Item</a></li>
-                <li><a th:href="@{/list}">List Items</a></li>
-            </ul>
-        </nav>
+    <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/additem}">Add Item</a></li>
+            <li><a th:href="@{/list}">List Items</a></li>
+        </ul>
+    </nav>
 
 
     <!-- Main -->
     <div id="main">
         <div class="inner">
             <header>
-                <h1>Finder Lost and Found Directory
-                   </h1>
+                <h1>Finder Lost Directory
+                </h1>
             </header>
 
 
@@ -68,37 +68,17 @@
 
                 </tr>
 
-                <tr th:each="item : ${itemlist}">
+                <tr th:each="item : ${lostitemslist}">
                     <td><img th:src="${item.image}" style="height: 200px"></td>
                     <td th:text="${item.itemType}"></td>
                     <td th:text="${item.itemName}"></td>
                     <td th:text="${item.itemStatus}"></td>
                     <!--<td>-->
-          <!--<span th:each="user:${item.user}">-->
-            <!--<p th:text="${user.firstName}"></p>-->
-          <!--</span>-->
+                    <!--<span th:each="user:${item.user}">-->
+                    <!--<p th:text="${user.firstName}"></p>-->
+                    <!--</span>-->
                     <!--</td>-->
                     <!--<td th:text="${item.itemName}"></td>-->
-
-                    <td>
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/update/{id}(id=${item.id})}" target="_self">
-                            Change Item Within Directory
-                        </a></p>
-
-
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info" th:href="@{/delete/{id}(id=${item.id})}" target="_self">
-                            Remove this  Item Directory
-                        </a></p>
-
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtofound/{id}(id=${item.id})}" target="_self">
-                            Add this Item to My Found List
-                        </a></p>
-
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtolost/{id}(id=${item.id})}" target="_self">
-                            Add this Item to Lost List
-                        </a></p>
-
-                    </td>
                 </tr>
             </table>
         </div>

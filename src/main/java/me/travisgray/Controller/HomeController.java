@@ -35,16 +35,19 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index(){
-        return "index3";
+
+        return "index";
     }
 
     @RequestMapping("/login")
     public String login(){
+
         return "login";
     }
 
     @RequestMapping("/admin")
     public String admin(){
+
         return "admin";
     }
 
@@ -67,27 +70,17 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/add")
-    public String potluckitemForm(Model model){
+    @GetMapping("/additem")
+    public String additemForm(Model model){
         model.addAttribute("item", new Item());
 
         return "additemform";
     }
 
-    @GetMapping("/list")
-    public String listApartments(Model model){
-        model.addAttribute("itemlist",itemRepository.findAll());
-//        Storing Book entries correctly
-        return "itemlist";
-    }
-
-
-
-
 
     //    Must pass created book entry here then save to repository model for thymeleaf loop
-    @PostMapping("/add")
-    public String processapartmentForm(@Valid @ModelAttribute("item") Item  item, BindingResult result, Model model, Authentication auth){
+    @PostMapping("/additem")
+    public String processitemsForm(@Valid @ModelAttribute("item") Item  item, BindingResult result, Model model, Authentication auth){
 
         if (result.hasErrors()){
             return "additemform";
@@ -97,6 +90,7 @@ public class HomeController {
 //        System.out.println("Test to see checkout status text field being stored correctly"+readingBook.getCheckoutstatus().equalsIgnoreCase("Borrow"));
 //        Need to make sure to add all books to model for thymeleaf access after this route is complete
 
+        item.setItemStatus("Missing");
         User user = userRepository.findByUsername(auth.getName());
         item.addUser(user);
         userRepository.save(user);
@@ -105,14 +99,22 @@ public class HomeController {
         return "itemlist";
     }
 
+
+    @GetMapping("/list")
+    public String listitems(Model model){
+        model.addAttribute("itemlist",itemRepository.findAll());
+        return "itemlist";
+    }
+
+
     @GetMapping("/update/{id}")
-    public String updateBooks(@PathVariable("id") long id, Model model){
+    public String updateItems(@PathVariable("id") long id, Model model){
         model.addAttribute("item",itemRepository.findOne(id));
         return "redirect:/additemform";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteBook(@PathVariable("id") long id, Model model){
+    public String deleteItems(@PathVariable("id") long id, Model model){
         model.addAttribute("item",itemRepository.findOne(id));
         itemRepository.delete(id);
         return "redirect:/itemlist";
@@ -128,20 +130,38 @@ public class HomeController {
         return "secure";
     }
 
-    @GetMapping("/addtopledge/{id}")
-    public String additemtopledgelist(@PathVariable("id") long id, Model model, Authentication auth){
+    @GetMapping("/addtofound/{id}")
+    public String additemtofoundlist(@PathVariable("id") long id, Model model, Authentication auth){
 
         Item item = itemRepository.findOne(id);
 //        Must use database user not spring security user
         User user = userRepository.findByUsername(auth.getName());
         user.addItem(item);
-        model.addAttribute("items4user", itemRepository.findOne(id));
+        item.setItemStatus("Found");
+        model.addAttribute("founditemslist", itemRepository.findOne(id));
         itemRepository.save(item);
         userRepository.save(user);
         model.addAttribute("userlist",userRepository.findAll());
         model.addAttribute("itemslist",userRepository.findAll());
-        return "useritemslist";
+        return "redirect:/list";
     }
+
+    @GetMapping("/addtolost/{id}")
+    public String additemtolostlist(@PathVariable("id") long id, Model model, Authentication auth){
+
+        Item item = itemRepository.findOne(id);
+//        Must use database user not spring security user
+        User user = userRepository.findByUsername(auth.getName());
+        user.addItem(item);
+        item.setItemStatus("Lost");
+        model.addAttribute("lostitemslist", itemRepository.findOne(id));
+        itemRepository.save(item);
+        userRepository.save(user);
+        model.addAttribute("userlist",userRepository.findAll());
+        model.addAttribute("itemslist",userRepository.findAll());
+        return "redirect:/list";
+    }
+
 
 //    @GetMapping("/addtopledge")
 //    public String additemtopledgelist(HttpServletRequest request, Model model, Authentication auth){

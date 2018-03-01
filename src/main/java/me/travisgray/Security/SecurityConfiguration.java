@@ -85,14 +85,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/detail/**",
             "/update/**",
             "/delete/**",
-            "/add",
+            "/additem",
             "/list",
             "/search",
             "/css/**",
             "/templates/**",
             "/js/**",
             "/static/**",
-            "/addtopledge/**",
+            "/assets/**",
+            "/fonts/**",
+            "/js/**",
+            "/sass/**",
+            "/images/**",
+            "/addtolost/**",
+            "/addtofound/**",
             "/addproducttoshoppingcart/**"
     };
 

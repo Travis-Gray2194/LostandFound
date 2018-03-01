@@ -35,7 +35,6 @@
     </header>
 
     <!-- Menu -->
-    <!-- Menu -->
     <div th:replace="index :: nav"></div>
 
 
@@ -43,21 +42,43 @@
     <footer id="footer">
         <div class="inner">
             <section>
-                <h1>Login!</h1>
-                <div th:if="${param.error}">
-                    Invalid Username and Password
-                </div>
+                <h1>Add Item to Lost Directory!</h1>
+                <form class="form" action="#" th:action="@{/additem}" th:object="${item}" method="post">
+                    <input type="hidden" th:field="*{id}">
 
-                <div th:if="${param.logout}">You have been logged out.></div>
 
-                <form th:action="@{/login}" method="post">
-                    <div><label> User Name: <input type="text" name="username" /></label></div>
+                    <label>Item Name:</label>
+                    <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
+                    <input type="text" class="form-control" placeholder="Item Name" th:field="*{itemName}">
 
-                    <br >
 
-                    <div><label> Password: <input type="password" name="password" /></label></div>
-                    <br >
-                    <div><input type="submit" value="Sign in"/></div>
+                    <br />
+
+
+                    <label >Item Type:</label>
+                    <span th:if="${#fields.hasErrors('itemType')}" th:errors="*{itemType}"></span>
+                    <select th:field="*{itemType}">
+                        <option value="Clothes">Clothes</option>
+                        <option value="Pets">Pets</option>
+                        <option value="Other">Other</option>
+                        <option value="Electronics">Electronics</option>
+                    </select>
+
+                    <label >Item Status:</label>
+                    <span th:if="${#fields.hasErrors('itemStatus')}" th:errors="*{itemStatus}"></span>
+                    <select th:field="*{itemStatus}">
+                        <option value="Missing">Missing</option>
+                        <option value="Lost">Lost</option>
+                    </select>
+
+
+                    <label >Image:</label>
+                    <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+                    <input type="text" placeholder="Image" class="form-control" th:field="*{image}">
+
+                    <input type="submit" value="Save" name="save" class="btn btn-block btn-primary" />
+
+
                 </form>
             </section>
             <section>

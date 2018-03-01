@@ -38,51 +38,70 @@
     <nav id="menu">
         <h2>Menu</h2>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="generic.html">Login</a></li>
-            <li><a href="generic.html">Tempus etiam</a></li>
-            <li><a href="generic.html">Consequat dolor</a></li>
-            <li><a href="elements.html">Elements</a></li>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/additem}">Add Item</a></li>
+            <li><a th:href="@{/list}">List Items</a></li>
         </ul>
     </nav>
 
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1>Finder Lost and Found Directory
+                </h1>
+            </header>
+
+
+            <table>
+                <tr>
+                    <th>Image</th>
+
+                    <th>Item Type:</th>
+
+                    <th>Item Name</th>
+                    <th>Item Status</th>
+                    <th>Item Services</th>
+
+                </tr>
+
+                <tr th:each="item : ${founditemslist}">
+                    <td><img th:src="${item.image}" style="height: 200px"></td>
+                    <td th:text="${item.itemType}"></td>
+                    <td th:text="${item.itemName}"></td>
+                    <td th:text="${item.itemStatus}"></td>
+                    <!--<td>-->
+                    <!--<span th:each="user:${item.user}">-->
+                    <!--<p th:text="${user.firstName}"></p>-->
+                    <!--</span>-->
+                    <!--</td>-->
+                    <!--<td th:text="${item.itemName}"></td>-->
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="footer">
         <div class="inner">
             <section>
-                <h1>Add Item to Potluck!</h1>
-                <form class="form" action="#" th:action="@{/additem}" th:object="${item}" method="post">
-                    <input type="hidden" th:field="*{id}">
-
-
-                    <label>Item Name:</label>
-                    <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
-                    <input type="text" class="form-control" placeholder="Item Name" th:field="*{itemName}">
-
-                    <label >Serving Size:</label>
-                    <span th:if="${#fields.hasErrors('servingSize')}" th:errors="*{servingSize}"></span>
-                    <input type="number" class="form-control" placeholder="Item Serving Size" th:field="*{servingSize}">
-
-                    <br />
-
-
-                    <label >Item Type:</label>
-                    <span th:if="${#fields.hasErrors('itemType')}" th:errors="*{itemType}"></span>
-                    <select th:field="*{itemType}">
-                        <option value="Food">Food</option>
-                        <option value="Drink">Drink</option>
-                        <option value="Desert">Desert</option>
-                    </select>
-
-
-                    <label >Image:</label>
-                    <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
-                    <input type="text" placeholder="Image" class="form-control" th:field="*{image}">
-
-                    <input type="submit" value="Save" name="save" class="btn btn-block btn-primary" />
-
-
+                <h2>Get in touch</h2>
+                <form method="post" action="#">
+                    <div class="field half first">
+                        <input type="text" name="name" id="name" placeholder="Name" />
+                    </div>
+                    <div class="field half">
+                        <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="field">
+                        <textarea name="message" id="message" placeholder="Message"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send" class="special" /></li>
+                    </ul>
                 </form>
             </section>
             <section>

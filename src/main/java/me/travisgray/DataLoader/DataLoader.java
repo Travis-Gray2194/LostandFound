@@ -53,19 +53,19 @@ public class DataLoader implements CommandLineRunner {
         userRepository.save(user4);
 
 
-        Item item1 = new Item("http://media.buzzle.com/media/images-en/gallery/conceptual/600-114334522-fruit-punch-in-glasses.jpg","Fruit Punch","5","Drink" );
+        Item item1 = new Item("https://cnet4.cbsistatic.com/img/Jib97xtRK_GM7pPyfVsMdma9H9E=/fit-in/970x0/2014/10/13/0ea985b4-9f3a-43d0-9a47-21154c864996/samsung-galaxy-note-4-9024.jpg","Note 4","Electronic","" );
         itemRepository.save(item1);
 
-        Item item2 = new Item("http://a0.fanbread.com/uploads/image/file/42469/extra_large_jerk-chicken-940.jpg?fd6a071b7412f614090e924c651ac7af","Jerk Chicken","5","Food" );
+        Item item2 = new Item("https://www.themarysue.com/wp-content/uploads/2016/06/ps3.jpg","PS3","Electronic","" );
         itemRepository.save(item2);
 
-        Item item3 = new Item("http://www.jamesandeverett.com/whatscooking/wp-content/uploads/2012/11/Tuaca-hot-apple-pie-3.jpg","Apple Pie","5","Desert" );
+        Item item3 = new Item("https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Xbox-360-Pro-wController.jpg/1200px-Xbox-360-Pro-wController.jpg","Xbox-360","Electronic","" );
         itemRepository.save(item3);
 
-        Item item4 = new Item("https://holisticwellness.ca/wp-content/uploads/2015/07/chocolate-ice-cream.gif","Choclate Ice Cream","10","Desert" );
+        Item item4 = new Item("https://cdn.macrumors.com/article-new/2014/11/2017ipadpro.jpg","Ipad Pro","Electronic","" );
         itemRepository.save(item4);
 
-        Item item5 = new Item("https://i1.wp.com/www.nigerianlazychef.com/wp-content/uploads/2015/07/IMG_6605-2.jpg","Jollof Rice","10","Food" );
+        Item item5 = new Item("http://p.globalsources.com/IMAGES/PDT/BIG/550/B1053160550.jpg","Alienware Laptop","Electronic","" );
         itemRepository.save(item5);
     }
 }

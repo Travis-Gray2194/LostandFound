@@ -35,16 +35,18 @@
 					</header>
 
 				<!-- Menu -->
+				<div th:fragment="nav">
 					<nav id="menu">
 						<h2>Menu</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Login</a></li>
-							<li><a href="generic.html">Tempus etiam</a></li>
-							<li><a href="generic.html">Consequat dolor</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a th:href="@{/}">Home</a></li>
+							<li><a th:href="@{/login}">Login</a></li>
+							<li><a th:href="@{/register}">Register</a></li>
+							<li><a th:href="@{/additem}">Add Item</a></li>
+							<li><a th:href="@{/list}">List Items</a></li>
 						</ul>
 					</nav>
+				</div>
 
 				<!-- Main -->
 					<div id="main">
