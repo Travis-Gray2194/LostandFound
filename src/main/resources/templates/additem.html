@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-sringsecurity">
+<head>
+    <title>Phantom by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="/static/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/static/assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!--[if lte IE 9]><link rel="stylesheet" href="/static/assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="/static/assets/css/ie8.css" /><![endif]-->
+
+</head>
+<body>
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Finder</span>
+            </a>
+
+            <!-- Nav -->
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Menu -->
+    <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="generic.html">Login</a></li>
+            <li><a href="generic.html">Tempus etiam</a></li>
+            <li><a href="generic.html">Consequat dolor</a></li>
+            <li><a href="elements.html">Elements</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <section>
+                <h1>Add Item to Potluck!</h1>
+                <form class="form" action="#" th:action="@{/additem}" th:object="${item}" method="post">
+                    <input type="hidden" th:field="*{id}">
+
+
+                    <label>Item Name:</label>
+                    <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
+                    <input type="text" class="form-control" placeholder="Item Name" th:field="*{itemName}">
+
+                    <label >Serving Size:</label>
+                    <span th:if="${#fields.hasErrors('servingSize')}" th:errors="*{servingSize}"></span>
+                    <input type="number" class="form-control" placeholder="Item Serving Size" th:field="*{servingSize}">
+
+                    <br />
+
+
+                    <label >Item Type:</label>
+                    <span th:if="${#fields.hasErrors('itemType')}" th:errors="*{itemType}"></span>
+                    <select th:field="*{itemType}">
+                        <option value="Food">Food</option>
+                        <option value="Drink">Drink</option>
+                        <option value="Desert">Desert</option>
+                    </select>
+
+
+                    <label >Image:</label>
+                    <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></span>
+                    <input type="text" placeholder="Image" class="form-control" th:field="*{image}">
+
+                    <input type="submit" value="Save" name="save" class="btn btn-block btn-primary" />
+
+
+                </form>
+            </section>
+            <section>
+                <h2>Follow</h2>
+                <ul class="icons">
+                    <li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+                    <li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
+                    <li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
+                    <li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+                </ul>
+            </section>
+            <ul class="copyright">
+                <li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
