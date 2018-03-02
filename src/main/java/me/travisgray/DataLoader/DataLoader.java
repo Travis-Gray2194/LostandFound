@@ -6,6 +6,7 @@ import me.travisgray.Models.User;
 import me.travisgray.Repositories.ItemRepository;
 import me.travisgray.Repositories.RoleRepository;
 import me.travisgray.Repositories.UserRepository;
+import me.travisgray.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,9 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     ItemRepository itemRepository;
 
+    @Autowired
+    UserService userService;
+
     @Override
     public void run(String... strings) throws Exception {
         System.out.println("Loading data...");
@@ -33,6 +37,7 @@ public class DataLoader implements CommandLineRunner {
 
         Role adminRole = roleRepository.findByRole("ADMIN");
         Role userRole = roleRepository.findByRole("USER");
+
 
         // Add user roles
         User user1 = new User("bob@burger.com", "password", "Bobby", "Burger", true, "bob");
@@ -67,5 +72,43 @@ public class DataLoader implements CommandLineRunner {
 
         Item item5 = new Item("http://p.globalsources.com/IMAGES/PDT/BIG/550/B1053160550.jpg","Alienware Laptop","Electronic","" );
         itemRepository.save(item5);
+
+        // Add user roles
+//        User user = new User("bob@burger.com", "password", "Bobby", "Burger", true, "bob");
+//        user.setRoles(Arrays.asList(userRole));
+//        userRepository.save(user);
+
+//        User user = new User("jane@virgin.com", "password", "Jane", "Virgin", true, "jane");
+//        ;
+//        Item item = new Item("https://cnet4.cbsistatic.com/img/Jib97xtRK_GM7pPyfVsMdma9H9E=/fit-in/970x0/2014/10/13/0ea985b4-9f3a-43d0-9a47-21154c864996/samsung-galaxy-note-4-9024.jpg","Note 4","Electronic","" );
+//        itemRepository.save(item);
+//        user.addItem(item);
+//        userRepository.save(user);
+
+//        // Add admin roles
+//        user = new User("admin@secure.com", "password", "Admin", "User", true, "admin");
+//        user.setRoles(Arrays.asList(adminRole));
+//        item = new Item("https://www.themarysue.com/wp-content/uploads/2016/06/ps3.jpg","PS3","Electronic","" );
+//        itemRepository.save(item);
+//        user.addItem(item);
+//        userRepository.save(user);
+//
+//        user = new User("clark@kent.com", "password", "Clark", "Kent", true, "clark");
+//        user.setRoles(Arrays.asList(userRole, adminRole));
+//        item = new Item("https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Xbox-360-Pro-wController.jpg/1200px-Xbox-360-Pro-wController.jpg","Xbox-360","Electronic","" );
+//        itemRepository.save(item);
+//        user.addItem(item);
+//        userRepository.save(user);
+//
+//
+//
+//        Item item4 = new Item("https://cdn.macrumors.com/article-new/2014/11/2017ipadpro.jpg","Ipad Pro","Electronic","" );
+//        itemRepository.save(item4);
+//
+//        Item item5 = new Item("http://p.globalsources.com/IMAGES/PDT/BIG/550/B1053160550.jpg","Alienware Laptop","Electronic","" );
+//        itemRepository.save(item5);
+
+
+
     }
 }

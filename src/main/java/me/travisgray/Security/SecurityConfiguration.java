@@ -150,10 +150,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
     throws Exception{
-        auth.inMemoryAuthentication().
-        withUser("user").password("password").authorities("USER").
-        and().
-        withUser("dave").password("begreat").authorities("ADMIN");
+//        auth.inMemoryAuthentication().
+////        withUser("user").password("password").authorities("USER").
+//        and().
+//        withUser("dave").password("begreat").authorities("ADMIN");
 
 //        Database Authentication must come after in memory authentication
         auth
