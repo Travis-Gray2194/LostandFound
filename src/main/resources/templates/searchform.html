@@ -20,7 +20,7 @@
         <div class="inner">
 
             <!-- Logo -->
-            <a th:href="@{/}" class="logo">
+            <a href="index.html" class="logo">
                 <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title" th:href="@{/}">Finder</span>
             </a>
 
@@ -35,7 +35,6 @@
     </header>
 
     <!-- Menu -->
-    <!-- Menu -->
     <div th:replace="index :: nav"></div>
 
 
@@ -43,23 +42,16 @@
     <footer id="footer">
         <div class="inner">
             <section>
-                <h1>Login!</h1>
-                <div th:if="${param.error}">
-                    Invalid Username and Password
+                <div class="container">
+                    <h1 class="text-center">Lost items Search</h1>
+                    <div class="col-md-6 col-md-offset-3">
+                        <form th:action="@{/search}" method="post">
+                            <div>Enter a complete or partial Item <span class="text-success">Item Information</span> to search for </div>
+                            <label>Item Information Search: </label><input type="text" name="search"/>
+                        </form>
+                    </div>
+
                 </div>
-
-                <div th:if="${param.logout}">You have been logged out.></div>
-
-
-                <form th:action="@{/login}" method="post">
-                    <div><label> User Name: <input type="text" name="username" /></label></div>
-
-                    <br >
-
-                    <div><label> Password: <input type="password" name="password" /></label></div>
-                    <br >
-                    <div><input type="submit" value="Sign in"/></div>
-                </form>
             </section>
             <section>
                 <h2>Follow</h2>

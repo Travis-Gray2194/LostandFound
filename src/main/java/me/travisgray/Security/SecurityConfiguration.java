@@ -98,8 +98,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/sass/**",
             "/images/**",
             "/addtolost/**",
-            "/addtofound/**",
-            "/addproducttoshoppingcart/**"
+    };
+
+    private static final String[] ADMIN_MATCHERS = {
+
+            "/addtofound/**"
     };
 
 //    HttpSecurity: tells us which routes people are allowed to acesses includes methods to restict or alllow access
@@ -116,7 +119,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
 //                .access("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
-                .antMatchers("/admin").access("hasAuthority('ADMIN')")
+                .antMatchers(ADMIN_MATCHERS).access("hasAuthority('ADMIN')")
+                .antMatchers("/user").access("hasAuthority('USER')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

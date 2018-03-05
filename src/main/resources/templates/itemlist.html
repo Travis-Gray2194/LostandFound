@@ -20,8 +20,8 @@
         <div class="inner">
 
             <!-- Logo -->
-            <a href="index.html" class="logo">
-                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Finder</span>
+            <a th:href="@{/}" class="logo">
+                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title" >Finder</span>
             </a>
 
             <!-- Nav -->
@@ -43,6 +43,7 @@
                 <li><a th:href="@{/register}">Register</a></li>
                 <li><a th:href="@{/additem}">Add Item</a></li>
                 <li><a th:href="@{/list}">List Items</a></li>
+                <li><a th:href="@{/search}">Search Items</a></li>
             </ul>
         </nav>
 
@@ -62,8 +63,8 @@
                     <th>Item Type:</th>
                     <th>Item Name</th>
                     <th>Item Status</th>
-                    <th>Item Services</th>
                     <th>Item Owner</th>
+                    <th>Item Services</th>
                 </tr>
 
 
@@ -87,11 +88,11 @@
                             Remove this  Item Directory
                         </a></p>
 
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtofound/{id}(id=${item.id})}" target="_self">
+                        <p sec:authorize="hasAuthority('ADMIN')" class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtofound/{id}(id=${item.id})}" target="_self">
                             Add this Item to My Found List
                         </a></p>
 
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtolost/{id}(id=${item.id})}" target="_self">
+                        <p sec:authorize="hasAuthority('ADMIN')" class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtolost/{id}(id=${item.id})}" target="_self">
                             Add this Item to Lost List
                         </a></p>
 

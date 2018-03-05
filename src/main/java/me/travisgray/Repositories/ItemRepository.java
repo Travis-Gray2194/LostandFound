@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ItemRepository extends CrudRepository<Item,Long> {
 
-    Iterable<Item> findAllByItemNameContainingIgnoreCase(String searchitems);
+    Iterable<Item> findAllByItemTypeContainingIgnoreCase(String searchitems);
 }

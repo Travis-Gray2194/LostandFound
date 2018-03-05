@@ -178,17 +178,8 @@ public class HomeController {
 
     }
 
-//    @GetMapping("/addtopledge")
-//    public String additemtopledgelist(HttpServletRequest request, Model model, Authentication auth){
-//
-//        String itemId = request.getParameter("id");
-//        Item item = itemRepository.findOne(new Long(itemId));
-////        Must use database user not spring security user
-//        User user = userRepository.findByUsername(auth.getName());
-//        user.addItem(item);
-//        model.addAttribute("items4user", itemRepository.findOne(new Long(itemId)));
-//        return "useritemslist";
-//    }
+
+    
 
     @GetMapping("/search")
     public String getSearch(){
@@ -202,7 +193,7 @@ public class HomeController {
 //
 
 //        Expecting multiple parameters or else will throw No parameter available Need to pass as many as are in constructor in Entity.
-        model.addAttribute("itemsearch",itemRepository.findAllByItemNameContainingIgnoreCase(searchItems));
+        model.addAttribute("itemsearch",itemRepository.findAllByItemTypeContainingIgnoreCase(searchItems));
 //
         return "searchitemlist";
     }
