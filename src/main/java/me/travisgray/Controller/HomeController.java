@@ -113,14 +113,14 @@ public class HomeController {
     @GetMapping("/update/{id}")
     public String updateItems(@PathVariable("id") long id, Model model){
         model.addAttribute("item",itemRepository.findOne(id));
-        return "redirect:/additemform";
+        return "redirect:/additem";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteItems(@PathVariable("id") long id, Model model){
         model.addAttribute("item",itemRepository.findOne(id));
         itemRepository.delete(id);
-        return "redirect:/itemlist";
+        return "redirect:/list";
     }
 
     @RequestMapping("/secure")

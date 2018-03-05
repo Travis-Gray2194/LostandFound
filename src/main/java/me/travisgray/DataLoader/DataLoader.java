@@ -83,8 +83,18 @@ public class DataLoader implements CommandLineRunner {
         Item item9 = new Item("https://cdn.macrumors.com/article-new/2014/11/2017ipadpro.jpg","Spark","Missing","","Pets" );
         itemRepository.save(item9);
 
-        Item item10 = new Item("https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg","Fluffy","Missing" ,"","Pets" );
+        Item item10 = new Item("https://i.ytimg.com/vi/SfLV8hD7zX4/maxresdefault.jpg","Gucci Watch","Missing" ,"","Clothes" );
         itemRepository.save(item10);
+
+        Item item11 = new Item("https://www.designerwear.co.uk/images/armani-jeans-armani-jeans-mens-dark-navy-white-crew-neck-t-shirt-p2367-1856_medium.jpg","Armani T-Shirt","Missing","","Clothes"  );
+        itemRepository.save(item11);
+
+        Item item12 = new Item("https://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=44383224","H&M Sweater","Missing","","Clothes" );
+        itemRepository.save(item12);
+
+        Item item13 = new Item("https://image-cdn.symphonycommerce.com/images/sites/neffheadwear/1446252138139_FoldBeanie_Blackr1.480w.jpg","Beanie","Missing" ,"","Clothes" );
+        itemRepository.save(item13);
+
 
         // Add user roles
 //        User user = new User("bob@burger.com", "password", "Bobby", "Burger", true, "bob");

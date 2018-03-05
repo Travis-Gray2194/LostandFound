@@ -40,6 +40,7 @@
             <ul>
                 <li><a th:href="@{/}">Home</a></li>
                 <li><a th:href="@{/login}">Login</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
                 <li><a th:href="@{/register}">Register</a></li>
                 <li><a th:href="@{/additem}">Add Item</a></li>
                 <li><a th:href="@{/list}">List Items</a></li>
@@ -85,15 +86,15 @@
                         </a></p>
 
 
-                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info" th:href="@{/delete/{id}(id=${item.id})}" target="_self">
-                            Remove this  Item Directory
+                        <p sec:authorize="hasAuthority('ADMIN')" class="lead text-center"><a class="special" class="btn btn-lg btn-info" th:href="@{/delete/{id}(id=${item.id})}" target="_self">
+                            Remove this Item from Directory
                         </a></p>
 
                         <p sec:authorize="hasAuthority('ADMIN')" class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtofound/{id}(id=${item.id})}" target="_self">
                             Add this Item to My Found List
                         </a></p>
 
-                        <p sec:authorize="hasAuthority('ADMIN')" class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtolost/{id}(id=${item.id})}" target="_self">
+                        <p class="lead text-center"><a class="special" class="btn btn-lg btn-info"  th:href="@{/addtolost/{id}(id=${item.id})}" target="_self">
                             Add this Item to Lost List
                         </a></p>
 
