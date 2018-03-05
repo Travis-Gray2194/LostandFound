@@ -46,6 +46,8 @@
                 <li><a th:href="@{/list}">List Items</a></li>
                 <li><a th:href="@{/search}">Search Items</a></li>
                 <li><a th:href="@{/userlist}">Current User Items</a></li>
+                <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/showfounditems}">Show Found Items</a></li>
+                <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/showlostitems}">Show Lost Items</a></li>
             </ul>
         </nav>
 

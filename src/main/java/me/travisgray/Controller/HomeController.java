@@ -149,6 +149,12 @@ public class HomeController {
         return "redirect:/list";
     }
 
+    @GetMapping("/showfounditems")
+    public String showallfounditems(Model model){
+        model.addAttribute("founditemslist", itemRepository.findAllByItemStatus("Found"));
+        return "founditemslist";
+    }
+
     @GetMapping("/addtolost/{id}")
     public String additemtolostlist(@PathVariable("id") long id, Model model, Authentication auth){
 
@@ -165,18 +171,14 @@ public class HomeController {
         return "redirect:/list";
     }
 
-    @PostMapping("/lostitmes")
-    public String lostitemslist(@ModelAttribute("items") Item item,Model model){
-
-        if(item.getItemStatus().equalsIgnoreCase("Lost")){
-            model.addAttribute("itemslist",userRepository.findAll());
-
-        }
-
-        return "redirect:/list";
-
-
+    @GetMapping("/showlostitems")
+    public String showalllostitems(Model model){
+        model.addAttribute("lostitemslist", itemRepository.findAllByItemStatus("Lost"));
+        return "lostitemslist";
     }
+
+
+
 
 
     @GetMapping("/userlist")
