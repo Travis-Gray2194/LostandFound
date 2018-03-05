@@ -177,6 +177,20 @@ public class HomeController {
         return "lostitemslist";
     }
 
+    @GetMapping("/showpetitems")
+    public String showallpetitems(Model model){
+        model.addAttribute("itemslist", itemRepository.findAllByItemType("Pets"));
+        return "lostitemslist";
+    }
+
+    @GetMapping("/showclothesitems")
+    public String showallclothesitems(Model model,@ModelAttribute("item") Item item){
+
+        model.addAttribute("itemslist", itemRepository.findAllByItemType("Clothes"));
+
+        return "lostitemslist";
+    }
+
 
 
 

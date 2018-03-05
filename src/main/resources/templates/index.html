@@ -57,19 +57,19 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>This is Finder, a free, fully responsive Spring Boot Web Application
+								<h1>This is Finder, a Spring Boot Web Application
 								 designed with Hibernate, HTML,CSS and JavaScript.</h1>
-								<p>Please use Finder to Search for Your and Found Items or Use our Quick Search Boxes below</p>
+								<p>Please use Finder to Search for Your Lost and Found Items or Use our Quick Search Boxes below</p>
 							</header>
 							<section class="tiles">
 								<article class="style1">
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
 									</span>
-									<a th:href="@{/showtypelist}">
-										<h2>Pets</h2>
-										<div class="content">
-											<p>See Pets within Finder's Database</p>
+									<a th:href="@{/showpetitems}">
+										<h2 th:href="@{/showpetitems}">Pets</h2>
+										<div th:href="@{/showpetitems}" class="content">
+											<p th:href="@{/showpetitems}" >See Pets within Finder's Database</p>
 										</div>
 									</a>
 								</article>
@@ -77,10 +77,10 @@
 									<span class="image">
 										<img src="images/pic02.jpg" alt="" />
 									</span>
-									<a th:href="@{/showtypelist}">
-										<h2>Clothes</h2>
-										<div class="content">
-											<p>See Clothes within Finder's Database.</p>
+									<a th:href="@{/showclothesitems}">
+										<h2 th:href="@{/showclothesitems}">Clothes</h2>
+										<div th:href="@{/showclothesitems}" class="content">
+											<p th:href="@{/showclothesitems}">See Clothes within Finder's Database.</p>
 										</div>
 									</a>
 								</article>
