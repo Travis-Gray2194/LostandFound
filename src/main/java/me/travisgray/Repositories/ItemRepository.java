@@ -1,6 +1,7 @@
 package me.travisgray.Repositories;
 
 import me.travisgray.Models.Item;
+import me.travisgray.Models.User;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -9,4 +10,8 @@ import org.springframework.data.repository.CrudRepository;
 public interface ItemRepository extends CrudRepository<Item,Long> {
 
     Iterable<Item> findAllByItemTypeContainingIgnoreCase(String searchitems);
+    Iterable<Item> findAllByUser(User user);
+    Iterable<Item> findAllByItemStatus(String itemstatus);
+
+
 }

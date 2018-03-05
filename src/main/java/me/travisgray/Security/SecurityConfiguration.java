@@ -98,6 +98,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             "/sass/**",
             "/images/**",
             "/addtolost/**",
+            "/showtypelist",
     };
 
     private static final String[] ADMIN_MATCHERS = {

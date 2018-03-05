@@ -21,7 +21,7 @@
 
             <!-- Logo -->
             <a href="index.html" class="logo">
-                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title" th:href="@{/}">Finder</span>
+                <span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Finder</span>
             </a>
 
             <!-- Nav -->
@@ -35,23 +35,49 @@
     </header>
 
     <!-- Menu -->
-    <div th:replace="index :: nav"></div>
+    <nav id="menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/login}">Login</a></li>
+            <li><a th:href="@{/register}">Register</a></li>
+            <li><a th:href="@{/additem}">Add Item</a></li>
+            <li><a th:href="@{/list}">List Items</a></li>
+            <li><a th:href="@{/search}">Search Items</a></li>
+            <li><a th:href="@{/userlist}">Current User Items</a></li>
+        </ul>
+    </nav>
 
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+            <header>
+                <h1>Error User Owner Not Found within Directory!
+                </h1>
+            </header>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="footer">
         <div class="inner">
             <section>
-                <div class="container">
-                    <h1 class="text-center">Lost items Search</h1>
-                    <div class="col-md-6 col-md-offset-3">
-                        <form th:action="@{/search}" method="post">
-                            <div>Enter a complete or partial Item <span class="text-success">Item Information</span> to search for </div>
-                            <label>Item Information Search: </label><input type="text" name="search"/>
-                        </form>
+                <h2>Get in touch</h2>
+                <form method="post" action="#">
+                    <div class="field half first">
+                        <input type="text" name="name" id="name" placeholder="Name" />
                     </div>
-
-                </div>
+                    <div class="field half">
+                        <input type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="field">
+                        <textarea name="message" id="message" placeholder="Message"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Send" class="special" /></li>
+                    </ul>
+                </form>
             </section>
             <section>
                 <h2>Follow</h2>

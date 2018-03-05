@@ -21,6 +21,8 @@ public class Item {
 
     private String itemStatus;
 
+    private String itemOwner;
+
     private String itemType;
 
     @ManyToMany(mappedBy = "items")
@@ -31,13 +33,21 @@ public class Item {
         this.user = new HashSet<User>();
     }
 
-    public Item(String image, String itemName, String itemType,String itemStatus) {
+    public Item(String image, String itemName, String itemStatus, String itemOwner, String itemType) {
         this.image = image;
         this.itemName = itemName;
-        this.itemType = itemType;
         this.itemStatus = itemStatus;
+        this.itemOwner = itemOwner;
+        this.itemType = itemType;
     }
 
+    public String getItemOwner() {
+        return itemOwner;
+    }
+
+    public void setItemOwner(String itemOwner) {
+        this.itemOwner = itemOwner;
+    }
 
     public void addUser(User u){
         this.user.add(u);

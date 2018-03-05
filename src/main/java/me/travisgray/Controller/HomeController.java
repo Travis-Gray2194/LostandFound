@@ -5,6 +5,7 @@ import me.travisgray.Models.User;
 import me.travisgray.Repositories.ItemRepository;
 import me.travisgray.Repositories.UserRepository;
 import me.travisgray.Service.UserService;
+import org.hibernate.pretty.MessageHelper;
 import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,9 +15,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.Message;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by ${TravisGray} on 11/13/2017.
@@ -88,10 +92,6 @@ public class HomeController {
         if (result.hasErrors()){
             return "additemform";
         }
-
-////        Check to see if image value is empty if it is then set default image string for thymeleaf add form
-//        System.out.println("Test to see checkout status text field being stored correctly"+readingBook.getCheckoutstatus().equalsIgnoreCase("Borrow"));
-//        Need to make sure to add all books to model for thymeleaf access after this route is complete
 
         item.setItemStatus("Missing");
         User user = userRepository.findByUsername(auth.getName());
@@ -179,7 +179,27 @@ public class HomeController {
     }
 
 
-    
+    @GetMapping("/userlist")
+    public String showuserlist(Model model, Authentication auth){
+
+        User user1 = userRepository.findByUsername(auth.getName());
+        model.addAttribute("useritems",itemRepository.findAllByUser(user1));
+
+
+        return "useritemslist";
+
+    }
+
+//
+
+    @PostMapping("/showclothes")
+    public String showclotheslist(Model model){
+        model.addAttribute("itemslist",itemRepository.findAllByItemTypeContainingIgnoreCase("clothes"));
+        return "itemslist";
+    }
+
+
+
 
     @GetMapping("/search")
     public String getSearch(){

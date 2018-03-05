@@ -1,5 +1,6 @@
 package me.travisgray.Repositories;
 
+import me.travisgray.Models.Item;
 import me.travisgray.Models.User;
 import org.springframework.data.repository.CrudRepository;
 
