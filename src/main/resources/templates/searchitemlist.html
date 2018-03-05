@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-sringsecurity">
+<head>
+    <title>Phantom by HTML5 UP</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script src="/static/assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="/static/assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/static/assets/css/ie9.css"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/static/assets/css/ie8.css"/><![endif]-->
+
+</head>
+<body>
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+
+            <!-- Logo -->
+            <a th:href="@{/}" class="logo">
+                <span class="symbol"><img src="images/logo.svg" alt=""/></span><span class="title" th:href="@{/}">Finder</span>
+            </a>
+
+            <!-- Nav -->
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <!-- Menu -->
+    <div th:replace="index :: nav"></div>
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <section>
+                <!--nav bar and css components-->
+                <div class="container">
+                    <h1 class="text-center">Item Search Results</h1>
+                    <div class="col-md-8 col-md-offset-4">
+                        <div th:if="${search}!=null" th:inline="text">You searched for [[${search}]]</div>
+                        <table th:if="${itemsearch}" class="table">
+
+                            <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Item Type:</th>
+                                <th>Item Name</th>
+                                <th>Item Status</th>
+                                <th>Item Owner</th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+
+
+                            <tr th:each="item :${itemsearch}">
+                                <td><img th:src="${item.image}" style="height: 200px"></td>
+                                <td th:text="${item.itemType}"></td>
+                                <td th:text="${item.itemName}"></td>
+                                <td th:text="${item.itemStatus}"></td>
+                                <td>
+                                    <span th:each="user:${item.user}">
+                                    <p th:text="${user.firstName}"></p>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+            <section>
+                <h2>Follow</h2>
+                <ul class="icons">
+                    <li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+                    <li><a href="#" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon style2 fa-500px"><span class="label">500px</span></a></li>
+                    <li><a href="#" class="icon style2 fa-phone"><span class="label">Phone</span></a></li>
+                    <li><a href="#" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
+                </ul>
+            </section>
+            <ul class="copyright">
+                <li>&copy; Untitled. All rights reserved</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
